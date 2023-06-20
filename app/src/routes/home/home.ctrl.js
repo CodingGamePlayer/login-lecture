@@ -16,12 +16,12 @@ const users = {
 };
 
 const process = {
-   login: (req, rep) => {
+   login: (req, res) => {
       const id = req.body.id,
          psword = req.body.psword;
 
       if (users.id.includes(id)) {
-         const idx = users.id.includes(id);
+         const idx = users.id.indexOf(id);
          if (users.psword[idx] === psword) {
             return res.json({
                success: true,
@@ -29,7 +29,7 @@ const process = {
          }
       }
 
-      return rep.json({
+      return res.json({
          success: false,
          msg: "로그인에 실패하였습니다.",
       });
